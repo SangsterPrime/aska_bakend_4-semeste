@@ -19,7 +19,7 @@ import com.example.aska.service.TallaService;
 
 @RestController
 @RequestMapping("/api/v1/talla")
-public class TallaControler {
+public class TallaController {
 
     @Autowired
     private TallaService tallaService;
