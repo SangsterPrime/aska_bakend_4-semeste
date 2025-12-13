@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -26,6 +28,12 @@ public class DataInitializer implements CommandLineRunner {
             admin.setContrasenaUsuario(passwordEncoder.encode("123456"));
             admin.setRole(Role.ROLE_ADMIN);
             usuarioRepository.save(admin);
+        }
+
+        List<Usuario> usersWithoutRole = usuarioRepository.findByRoleIsNull();
+        for (Usuario user : usersWithoutRole) {
+            user.setRole(Role.ROLE_USER);
+            usuarioRepository.save(user);
         }
     }
 }
