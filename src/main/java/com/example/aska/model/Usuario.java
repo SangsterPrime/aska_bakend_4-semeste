@@ -9,6 +9,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,4 +38,7 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)
     private Role role;
+
+    @JoinColumn(name = "idRol", insertable = false, updatable = false)
+    private Integer idRol;
 }
